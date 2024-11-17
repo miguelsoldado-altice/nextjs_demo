@@ -32,6 +32,7 @@ export default async function Edit({ params }: EditProps) {
         onSubmitAction={editProduct}
         successMessage="Product edited successfully!"
         defaultValues={{ ...product, price: +product.price, description: product.description ?? undefined }}
+        productId={product.id}
       />
     </div>
   );

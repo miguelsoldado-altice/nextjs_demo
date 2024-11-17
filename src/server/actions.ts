@@ -8,7 +8,7 @@ import type { FormState } from "@/types";
 
 export async function getAllProducts() {
   // await new Promise((resolve) => setTimeout(resolve, 2000));
-  return db.query.products.findMany();
+  return db.query.products.findMany({ orderBy: (products, { desc }) => [desc(products.updatedAt)] });
 }
 
 export async function createProduct(_prevState: FormState, data: FormData): Promise<FormState> {
@@ -39,18 +39,18 @@ export async function getProduct(productId: string) {
   return db.query.products.findFirst({ where: eq(schema.products.id, +productId) });
 }
 
-export async function editProduct(_prevState: FormState, data: FormData): Promise<FormState> {
+export async function editProduct(_prevState: FormState, data: FormData, productId?: number): Promise<FormState> {
   const formData = Object.fromEntries(data);
   const parsed = productSchema.safeParse(formData);
 
-  if (!parsed.success || !parsed.data.id) {
+  if (!parsed.success || !productId) {
     return { message: "Invalid form data", success: false };
   }
 
   await db
     .update(schema.products)
     .set({ ...parsed.data, price: parsed.data.price.toFixed(2), updatedAt: new Date() })
-    .where(eq(schema.products.id, parsed.data.id));
+    .where(eq(schema.products.id, productId));
 
-  return { message: `Product updated with id: ${parsed.data.id}`, success: true };
+  return { message: `Product updated with id: ${productId}`, success: true };
 }

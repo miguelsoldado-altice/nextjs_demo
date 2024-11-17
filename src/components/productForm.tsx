@@ -14,9 +14,10 @@ import { productSchema } from "./productFormSchema";
 import type { FormState } from "@/types";
 
 interface ProductFormProps {
-  onSubmitAction: (prevState: FormState, data: FormData) => Promise<FormState>;
+  onSubmitAction: (prevState: FormState, data: FormData, productId?: number) => Promise<FormState>;
   defaultValues: z.input<typeof productSchema>;
   successMessage: string;
+  productId?: number;
 }
 
 export function ProductForm({ onSubmitAction, defaultValues, successMessage }: ProductFormProps) {
@@ -90,7 +91,6 @@ export function ProductForm({ onSubmitAction, defaultValues, successMessage }: P
             </FormItem>
           )}
         />
-        <FormField name="id" control={form.control} render={({ field }) => <Input className="hidden" {...field} />} />
         <Button type="submit" disabled={isPending}>
           Submit
         </Button>
