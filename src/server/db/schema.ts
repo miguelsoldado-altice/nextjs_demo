@@ -1,4 +1,11 @@
-import { pgTable, serial, text, timestamp, varchar, numeric } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  varchar,
+  numeric,
+} from "drizzle-orm/pg-core";
 
 export const products = pgTable("products", {
   id: serial("id").primaryKey(),
@@ -11,3 +18,4 @@ export const products = pgTable("products", {
 });
 
 export type Product = typeof products.$inferSelect;
+export type ProductInsert = typeof products.$inferInsert;

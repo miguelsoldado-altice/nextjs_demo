@@ -1,4 +1,12 @@
-import { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell } from "@/components/ui/table";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@/components/ui/table";
 import { getAllProducts } from "@/server/actions";
 
 export async function ProductTable() {
@@ -10,9 +18,8 @@ export async function ProductTable() {
         <TableRow>
           <TableHead>ID</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>Description</TableHead>
+          <TableHead className="max-w-xs">Description</TableHead>
           <TableHead>Price</TableHead>
-          <TableHead>SKU</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Updated At</TableHead>
         </TableRow>
@@ -20,13 +27,20 @@ export async function ProductTable() {
       <TableBody>
         {products.map((product) => (
           <TableRow key={product.id}>
-            <TableCell>{product.id}</TableCell>
-            <TableCell>{product.name}</TableCell>
-            <TableCell>{product.description}</TableCell>
-            <TableCell>{product.price}</TableCell>
-            <TableCell>{product.sku}</TableCell>
-            <TableCell>{product.createdAt.toLocaleString("pt-PT")}</TableCell>
-            <TableCell>{product.updatedAt.toLocaleString("pt-PT")}</TableCell>
+            <TableCell className="whitespace-nowrap">{product.id}</TableCell>
+            <TableCell className="whitespace-nowrap">{product.name}</TableCell>
+            <TableCell className="max-w-xs truncate">
+              {product.description}
+            </TableCell>
+            <TableCell className="whitespace-nowrap">
+              € {product.price}
+            </TableCell>
+            <TableCell className="whitespace-nowrap">
+              {new Date(product.createdAt).toLocaleString("pt-PT")}
+            </TableCell>
+            <TableCell className="whitespace-nowrap">
+              {new Date(product.updatedAt).toLocaleString("pt-PT")}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
