@@ -1,4 +1,4 @@
-import { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getAllProducts } from "@/server/actions";
 import { ActionsButtons } from "./actionsButtons";
 

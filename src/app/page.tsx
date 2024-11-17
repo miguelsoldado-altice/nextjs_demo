@@ -1,7 +1,7 @@
 import { Suspense } from "react";
+import { CreateProductButton } from "@/components/createProductButton"; // Adjust the import path as necessary
 import { ProductTable } from "@/components/productTable";
 import { Spinner } from "@/components/spinner";
-import { CreateProductButton } from "@/components/createProductButton"; // Adjust the import path as necessary
 
 export default function Home() {
   return (

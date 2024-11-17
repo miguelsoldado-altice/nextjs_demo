@@ -1,6 +1,6 @@
+import { redirect } from "next/navigation";
 import { ProductForm } from "@/components/productForm";
 import { editProduct, getProduct } from "@/server/actions";
-import { redirect } from "next/navigation";
 
 interface EditProps {
   params: Promise<{ productId: string }>;
