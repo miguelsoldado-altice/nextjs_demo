@@ -1,13 +1,6 @@
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-} from "@/components/ui/table";
+import { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell } from "@/components/ui/table";
 import { getAllProducts } from "@/server/actions";
+import { ActionsButtons } from "./actionsButtons";
 
 export async function ProductTable() {
   const products = await getAllProducts();
@@ -17,29 +10,25 @@ export async function ProductTable() {
       <TableHeader>
         <TableRow>
           <TableHead>ID</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead className="max-w-xs">Description</TableHead>
+          <TableHead className="w-8">Name</TableHead>
+          <TableHead className="w-36">Description</TableHead>
           <TableHead>Price</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Updated At</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {products.map((product) => (
           <TableRow key={product.id}>
-            <TableCell className="whitespace-nowrap">{product.id}</TableCell>
-            <TableCell className="whitespace-nowrap">{product.name}</TableCell>
-            <TableCell className="max-w-xs truncate">
-              {product.description}
-            </TableCell>
-            <TableCell className="whitespace-nowrap">
-              € {product.price}
-            </TableCell>
-            <TableCell className="whitespace-nowrap">
-              {new Date(product.createdAt).toLocaleString("pt-PT")}
-            </TableCell>
-            <TableCell className="whitespace-nowrap">
-              {new Date(product.updatedAt).toLocaleString("pt-PT")}
+            <TableCell className="truncate">{product.id}</TableCell>
+            <TableCell className="truncate">{product.name}</TableCell>
+            <TableCell className="max-w-xs truncate">{product.description}</TableCell>
+            <TableCell className="truncate">€ {product.price}</TableCell>
+            <TableCell className="truncate">{new Date(product.createdAt).toLocaleString("pt-PT")}</TableCell>
+            <TableCell className="truncate">{new Date(product.updatedAt).toLocaleString("pt-PT")}</TableCell>
+            <TableCell>
+              <ActionsButtons productId={product.id} />
             </TableCell>
           </TableRow>
         ))}
