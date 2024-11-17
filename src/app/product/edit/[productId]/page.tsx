@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ProductForm } from "@/components/productForm";
 import { editProduct, getProduct } from "@/server/actions";
+import { ArrowLeft } from "lucide-react";
 
 interface EditProps {
   params: Promise<{ productId: string }>;
@@ -15,11 +17,14 @@ export default async function Edit({ params }: EditProps) {
 
   return (
     <div className="space-y-8">
-      <section className="flex justify-between gap-4 border-b pb-4 md:mx-2 md:items-center">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Edit Product</h1>
-          <span className="hidden text-muted-foreground md:flex">Make changes to an existing product</span>
-        </div>
+      <section className="flex items-center justify-between gap-4 border-b pb-4 md:mx-2">
+        <Link href="/" className="flex items-center gap-4">
+          <ArrowLeft />
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Edit Product</h1>
+            <span className="hidden text-muted-foreground md:flex">Make changes to an existing product</span>
+          </div>
+        </Link>
       </section>
       <ProductForm
         onSubmitAction={editProduct}
