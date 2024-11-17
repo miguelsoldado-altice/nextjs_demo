@@ -25,9 +25,7 @@ export default async function Edit({ params }: EditProps) {
           </div>
         </Link>
         <DeleteProductDialog productId={product.id}>
-          <Button className="font-semibold" variant="destructive">
-            Delete Product
-          </Button>
+          <Button variant="destructive">Delete Product</Button>
         </DeleteProductDialog>
       </section>
       <ProductForm
