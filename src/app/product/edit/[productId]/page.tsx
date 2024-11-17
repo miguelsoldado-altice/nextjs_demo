@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { DeleteProductDialog } from "@/components/deleteProductDialog";
 import { ProductForm } from "@/components/productForm";
+import { Button } from "@/components/ui/button";
 import { editProduct, getProduct } from "@/server/actions";
 import { ArrowLeft } from "lucide-react";
 
@@ -10,10 +12,7 @@ interface EditProps {
 
 export default async function Edit({ params }: EditProps) {
   const product = await getProduct((await params).productId);
-
-  if (!product) {
-    redirect("/");
-  }
+  if (!product) redirect("/");
 
   return (
     <div className="space-y-8">
@@ -25,6 +24,11 @@ export default async function Edit({ params }: EditProps) {
             <span className="hidden text-muted-foreground md:flex">Make changes to an existing product</span>
           </div>
         </Link>
+        <DeleteProductDialog productId={product.id}>
+          <Button className="font-semibold" variant="destructive">
+            Delete Product
+          </Button>
+        </DeleteProductDialog>
       </section>
       <ProductForm
         onSubmitAction={editProduct}
