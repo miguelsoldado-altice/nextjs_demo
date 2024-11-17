@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { CreateProductButton } from "@/components/createProductButton"; // Adjust the import path as necessary
+import { CreateProductButton } from "@/components/createProductButton";
 import { ProductTable } from "@/components/productTable";
 import { Spinner } from "@/components/spinner";
 
