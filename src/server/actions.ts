@@ -1,17 +1,14 @@
 "use server";
 
+import { eq } from "drizzle-orm";
 import { productSchema } from "@/components/productFormSchema";
 import { db } from "./db";
 import * as schema from "./db/schema";
+import type { FormState } from "@/types";
 
 export async function getAllProducts() {
   // await new Promise((resolve) => setTimeout(resolve, 2000));
   return db.query.products.findMany();
-}
-
-interface FormState {
-  message: string;
-  success?: boolean;
 }
 
 export async function createProduct(_prevState: FormState, data: FormData): Promise<FormState> {
@@ -32,4 +29,28 @@ export async function createProduct(_prevState: FormState, data: FormData): Prom
     .returning({ id: schema.products.id });
 
   return { message: `Product created with id: ${product.id}`, success: true };
+}
+
+export async function getProduct(productId: string) {
+  if (isNaN(+productId)) {
+    return null;
+  }
+
+  return db.query.products.findFirst({ where: eq(schema.products.id, +productId) });
+}
+
+export async function editProduct(_prevState: FormState, data: FormData): Promise<FormState> {
+  const formData = Object.fromEntries(data);
+  const parsed = productSchema.safeParse(formData);
+
+  if (!parsed.success || !parsed.data.id) {
+    return { message: "Invalid form data", success: false };
+  }
+
+  await db
+    .update(schema.products)
+    .set({ ...parsed.data, price: parsed.data.price.toFixed(2), updatedAt: new Date() })
+    .where(eq(schema.products.id, parsed.data.id));
+
+  return { message: `Product updated with id: ${parsed.data.id}`, success: true };
 }

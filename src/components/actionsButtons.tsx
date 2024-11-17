@@ -75,7 +75,7 @@ export function ActionsButtons({ productId }: ActionsButtonsProps) {
         </DialogContent>
       </Dialog>
       <Button className="size-8" size="icon" asChild>
-        <Link href={`/edit/${productId}`}>
+        <Link href={`/product/edit/${productId}`}>
           <Edit />
         </Link>
       </Button>
