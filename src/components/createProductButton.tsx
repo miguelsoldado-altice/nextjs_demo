@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"; // Adjust the import path as ne
 
 export function CreateProductButton() {
   return (
-    <Link href="/product/create" passHref>
+    <Link href="/products/create" passHref>
       <Button className="mr-2 mt-2">Create Product</Button>
     </Link>
   );

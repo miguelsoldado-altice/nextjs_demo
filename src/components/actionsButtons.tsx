@@ -18,7 +18,7 @@ export function ActionsButtons({ productId }: ActionsButtonsProps) {
         </Button>
       </DeleteProductDialog>
       <Button className="size-8" size="icon" asChild>
-        <Link href={`/product/edit/${productId}`}>
+        <Link href={`/products/edit/${productId}`}>
           <Edit />
         </Link>
       </Button>
