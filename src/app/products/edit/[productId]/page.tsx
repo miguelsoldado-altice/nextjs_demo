@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { editProduct, getProduct } from "@/server/actions";
+import { ArrowLeft } from "lucide-react";
 import { DeleteProductDialog } from "@/components/deleteProductDialog";
 import { ProductForm } from "@/components/productForm";
 import { Button } from "@/components/ui/button";
-import { editProduct, getProduct } from "@/server/actions";
-import { ArrowLeft } from "lucide-react";
 
 interface EditProps {
   params: Promise<{ productId: string }>;

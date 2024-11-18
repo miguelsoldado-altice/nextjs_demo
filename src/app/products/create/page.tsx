@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { ProductForm } from "@/components/productForm";
 import { createProduct } from "@/server/actions";
 import { ArrowLeft } from "lucide-react";
+import { ProductForm } from "@/components/productForm";
 
 export default function Create() {
   return (

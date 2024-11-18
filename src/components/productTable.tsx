@@ -1,5 +1,5 @@
-import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getAllProducts } from "@/server/actions";
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ActionsButtons } from "./actionsButtons";
 
 export async function ProductTable() {
