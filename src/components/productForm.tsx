@@ -20,12 +20,12 @@ interface ProductFormProps {
   productId?: number;
 }
 
-export function ProductForm({ onSubmitAction, defaultValues, successMessage }: ProductFormProps) {
-  const [state, formAction, isPending] = useActionState(onSubmitAction, { message: "" });
-  const form = useForm<z.output<typeof productSchema>>({
-    resolver: zodResolver(productSchema),
-    defaultValues,
-  });
+export function ProductForm({ onSubmitAction, defaultValues, successMessage, productId }: ProductFormProps) {
+  const form = useForm<z.output<typeof productSchema>>({ resolver: zodResolver(productSchema), defaultValues });
+  const [state, formAction, isPending] = useActionState(
+    (prevState: FormState, data: FormData) => onSubmitAction(prevState, data, productId),
+    { message: "" },
+  );
 
   useEffect(() => {
     if (!state.success && state.message) {
