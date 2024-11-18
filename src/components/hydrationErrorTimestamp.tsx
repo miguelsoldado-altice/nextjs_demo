@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
+// https://nextjs.org/docs/messages/react-hydration-error
 export function HydrationErrorTimestamp() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleString());
 

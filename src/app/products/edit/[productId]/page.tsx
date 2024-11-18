@@ -12,7 +12,7 @@ interface EditProps {
 
 export default async function Edit({ params }: EditProps) {
   const product = await getProduct((await params).productId);
-  if (!product) redirect("/");
+  if (!product) redirect("/products");
 
   return (
     <div className="space-y-8">
