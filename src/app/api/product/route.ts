@@ -1,6 +1,6 @@
+import { eq } from "drizzle-orm";
 import { db } from "@/server/db";
 import * as schema from "@/server/db/schema";
-import { eq } from "drizzle-orm";
 
 export async function DELETE(request: Request) {
   const { id } = await request.json();
