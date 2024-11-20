@@ -23,6 +23,7 @@
 
 - demo
   . file routing (layout.tsx, page.tsx, dynamic routes)
+  . show caching definitions + typescript version change.
   . show hydration warning and how to get around it.
   . api calls with + without suspense boundaries. (+ explain why we currently aren't using this in any project)
   . passing server components as props to client components.

@@ -4,6 +4,7 @@ import { ProductTable } from "@/components/productTable";
 import { Spinner } from "@/components/spinner";
 
 export const dynamic = "force-dynamic";
+// export const revalidate = 30;
 
 export default function Home() {
   return (
