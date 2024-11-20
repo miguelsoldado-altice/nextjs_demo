@@ -3,8 +3,6 @@ import { CreateProductButton } from "@/components/createProductButton";
 import { ProductTable } from "@/components/productTable";
 import { Spinner } from "@/components/spinner";
 
-export const dynamic = "force-dynamic";
-
 export default function Home() {
   return (
     <div className="space-y-4">
