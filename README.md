@@ -19,7 +19,7 @@
   . "use server" components will ONLY render in the server
   . "use client" does not mean the component will not run on the server, it only tells react that the component will need event handlers and js interactivity
   . nextjs was the first meta-framework that adopted RSC and joined forces with the react team to change the core react model to it
-  . https://www.youtube.com/watch?v=zMf_xeGPn6s&ab_channel=Remix
+  . https://www.youtube.com/live/T8TZQ6k4SLE?t=18825s
 
 - demo
   . file routing (layout.tsx, page.tsx, dynamic routes)
